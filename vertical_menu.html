@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vertical menu</title>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+    <style>
+        .vertical-menu{
+            width:200px;
+            cursor: pointer;
+        }
+        .wrap > div:first-child{
+            text-align: center;
+            height:40px;
+            line-height: 40px;
+            padding:10px;
+            background: white;
+            border-bottom: 1px solid  #cdb0b0;
+            transition: background-color 0.4s linear;
+        }
+        .wrap > div:first-child:hover{
+            background-color: #4cff00;
+        }
+        .wrap > div:first-child >i{
+            float:right;
+            line-height: 40px;
+            transition:transform 0.5s linear;
+        }
+        .wrap > div:last-child{
+            display: none;
+        }
+        .wrap > div:last-child >div{
+            transition:background 0.2s linear;
+            text-align: center;
+            border-bottom:solid 1px #e6e6e6;
+            color:darkcyan;
+            height:30px;
+            line-height: 30px;
+        }
+        .wrap > div:last-child >div:hover{
+            background: lightseagreen;
+        }
+    </style>
+</head>
+<body>
+<div class="vertical-menu">
+    <div class="wrap">
+        <div><span>水果</span><i class="fa fa-angle-right fa-lg" data-open="false"></i></div>
+        <div>
+            <div><span>香蕉</span></div>
+            <div><span>苹果</span></div>
+            <div><span>橘子</span></div>
+            <div><span>芒果</span></div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div><span>运动类</span><i class="fa fa-angle-right fa-lg" data-open="false"></i></div>
+        <div>
+            <div><span>李宁</span></div>
+            <div><span>耐克</span></div>
+            <div><span>阿迪达斯</span></div>
+            <div><span>asics</span></div>
+        </div>
+    </div>
+    <div class="wrap">
+        <div><span>景区</span><i class="fa fa-angle-right fa-lg" data-open="false"></i></div>
+        <div>
+            <div><span>故宫</span></div>
+            <div><span>圆明园</span></div>
+            <div><span>颐和园</span></div>
+            <div><span>北海</span></div>
+        </div>
+    </div>
+</div>
+
+<script src="jquery-3.1.0.js"></script>
+<script>
+$('.wrap > div:first-child').click(function (e) {
+    //var $elem=$(this).children('i.fa-angle-right');
+    $('.wrap > div:first-child').not(this).children('i.fa-angle-right').css({'transform':'rotate(0deg)','color':'black'}).attr('data-open',false);
+    if($(this).children('i.fa-angle-right').attr('data-open')=='false'){
+        $(this).children('i.fa-angle-right').attr('data-open',true).css({'transform':'rotate(90deg)','color':'#66bd6a'});
+        $('.wrap > div:first-child').not(this).siblings().slideUp();
+        $(this).siblings().slideDown();
+    }else {
+        $(this).children('i.fa-angle-right').attr('data-open',false).css({'transform':'rotate(0deg)','color':'black'});
+        $(this).siblings().slideUp();
+    }
+});
+</script>
+</body>
+</html>
